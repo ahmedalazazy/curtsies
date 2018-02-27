@@ -288,10 +288,10 @@ class CursorAwareWindow(BaseWindow):
                                          (resp,))
                     return c
                 except IOError:
-                    raise ValueError(
-                        'cursor get pos response read interrupted'
-                    )
-                    # find out if this ever really happens - if so, continue
+                    # apparently sometimes this happens: the only documented
+                    # case is Terminal on a Ubuntu 17.10 VM on osx 10.13.
+                    # see issue #732
+                    continue
 
         resp = ''
         while True:
